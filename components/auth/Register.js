@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, Button, TextInput } from "react-native";
+
+import firebase from "firebase";
 
 export class Register extends Component {
   constructor(props) {
@@ -11,10 +13,17 @@ export class Register extends Component {
       name: "",
     };
 
-    this.onSignUp = this.onSighUp.bind(this); //???
+    this.onSignUp = this.onSignUp.bind(this); //???
   }
 
-  onSighUp() {}
+  onSignUp() {
+    const { email, password, name } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => console.log("result : " + result))
+      .catch((error) => console.log("error : " + error)); //firebase 서버에서 response 오면 콜백됨
+  }
 
   render() {
     return (

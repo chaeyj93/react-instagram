@@ -19,13 +19,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import LandingScreen from "./components/auth/Landing";
+import RegisterScreen from "./components/auth/Register";
 
 const Stack = createStackNavigator(); // https://eso0609.tistory.com/88
 
-// if (firebase.apps.length === 0) {
-//   // crash 방지
-//   firebase.initializeApp(firebase);
-// }
+if (firebase.apps.length === 0) {
+  // crash 방지
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
   return (
@@ -35,6 +36,10 @@ export default function App() {
           name="Landing"
           component={LandingScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen} //import 하는 이름과 맞춰야 함
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import { View, Button, TextInput } from "react-native";
 
 export class Register extends Component {
@@ -21,7 +21,7 @@ export class Register extends Component {
       <View>
         <TextInput
           placeholder="name"
-          onChangeText={(name) => this.setState({ name: name })} // 그냥 {name} 라고 해도 됨
+          onChangeText={(name) => this.setState({ name: name })}
         />
         <TextInput
           placeholder="email"

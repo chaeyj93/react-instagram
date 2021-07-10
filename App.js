@@ -29,29 +29,31 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Landing">
-        {/* 이거대신에 createStackNavigator 할때 Home : Landing 해줘도 될듯? 나중에 해보자*/}
-        <Stack.Screen
-          name="Landing" //navigater.navigate('Landing')해서 오면 이리로 온다는 의미
-          component={LandingScreen} //띄우는 컴포넌트는 이거!
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegisterScreen} //import 하는 이름과 맞춰야 함
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: true }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Landing">
+          {/* 이거대신에 createStackNavigator 할때 Home : Landing 해줘도 될듯? 나중에 해보자*/}
+          <Stack.Screen
+            name="Landing" //navigater.navigate('Landing')해서 오면 이리로 온다는 의미
+            component={LandingScreen} //띄우는 컴포넌트는 이거!
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen} //import 하는 이름과 맞춰야 함
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: true }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -62,3 +64,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default App;

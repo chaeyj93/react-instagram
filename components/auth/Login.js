@@ -12,7 +12,7 @@ export class Login extends Component {
       password: "",
     };
 
-    this.onSignUp = this.onSignUp.bind(this); //??? 빼도 된다고??? this 가 뭔지 알려주는 거.
+    this.onSignIn = this.onSignIn.bind(this); //??? 빼도 된다고??? this 가 뭔지 알려주는 거.
   }
 
   onSignIn() {

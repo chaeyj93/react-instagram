@@ -20,8 +20,8 @@ export class Login extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((result) => console.log("result : " + result)) //firebase 서버에서 response 오면 콜백됨
-      .catch((error) => console.log("error : " + error));
+      .then((result) => console.log("login result : " + result)) //firebase 서버에서 response 오면 콜백됨
+      .catch((error) => console.log("login error : " + error));
   }
 
   render() {

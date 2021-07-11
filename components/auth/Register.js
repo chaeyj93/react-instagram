@@ -21,8 +21,15 @@ export class Register extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => console.log("result : " + result)) //firebase 서버에서 response 오면 콜백됨
-      .catch((error) => console.log("error : " + error));
+      .then((result) => {
+        firebase
+          .firestore()
+          .collection("users") //collectionPath
+          .doc(firebase.auth().currentUser.uid) //Get a DocumentReference for the document within the collection at the specified path.
+          .set({ name, email }); //doc 에 보낼 값들
+        console.log("register result : " + result);
+      }) //firebase 서버에서 response 오면 콜백됨
+      .catch((error) => console.log("register error : " + error));
   }
 
   render() {

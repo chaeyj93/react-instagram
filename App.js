@@ -4,6 +4,15 @@ import { StyleSheet, View, Text } from "react-native";
 
 import * as firebase from "firebase";
 
+//////react 와 react 사용하기 위해 [start]/////
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./redux/reducers";
+import thunk from "redux-thunk"; //dispatch function 쓰게
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+//////react 와 react 사용하기 위해 [end]]/////
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBIzVZrEjSGQF6wVqgmMvdlrcWbgAh-lwA",
@@ -21,6 +30,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
 import LoginScreen from "./components/auth/Login";
+import MainScreen from "./components/Main";
 
 const Stack = createStackNavigator(); // https://eso0609.tistory.com/88
 
@@ -83,9 +93,17 @@ export class App extends Component {
     }
 
     return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text>User is logged in</Text>
-      </View>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Main">
+            <Stack.Screen
+              name="Main"
+              component={MainScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     );
   }
 }

@@ -31,6 +31,7 @@ import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
 import LoginScreen from "./components/auth/Login";
 import MainScreen from "./components/Main";
+import AddScreen from "./components/main/Add";
 
 const Stack = createStackNavigator(); // https://eso0609.tistory.com/88
 
@@ -100,6 +101,11 @@ export class App extends Component {
               name="Main"
               component={MainScreen}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Add"
+              component={AddScreen}
+              options={{ headerShown: true }}
             />
           </Stack.Navigator>
         </NavigationContainer>

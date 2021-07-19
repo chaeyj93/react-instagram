@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUser } from "../redux/actions/index.js";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import FeedScreen from "./main/Feed";
 import AddScreen from "./main/Add";
 import ProfileScreen from "./main/Profile";
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const EmptyScreen = () => {
   return null;
@@ -30,9 +30,10 @@ export class Main extends Component {
       // <View style={{ flex: 1, justifyContent: "center" }}>
       //   <Text>User is logged in</Text>
       // </View>
-      <Tab.Navigator>
+      <Tab.Navigator initialRouteName="Feed">
         <Tab.Screen
           name="Feed"
+          labeled={false}
           component={FeedScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -42,6 +43,7 @@ export class Main extends Component {
         />
         <Tab.Screen
           name="AddContainer"
+          labeled={false}
           component={AddScreen}
           listeners={({ navigation }) => ({
             tabPress: (event) => {
@@ -57,6 +59,7 @@ export class Main extends Component {
         />
         <Tab.Screen
           name="Profile"
+          labeled={false}
           component={ProfileScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
